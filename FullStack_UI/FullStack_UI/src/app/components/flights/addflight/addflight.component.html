@@ -1,0 +1,39 @@
+<body>
+<div class="container my-5">
+    <h2 class="mb-3" style="color: brown;">Add New Flight</h2>
+    <div class="row">
+        <div class="col-6">
+<form #form="ngForm" (ngSubmit)="AddFlight()">
+    <div class="form-group">
+      <label for="flightid">Flight id</label>
+      <input type="text" class="form-control" id="flightid" placeholder="Flight id" name="flightid" [(ngModel)]="flightrequest.flightid" required>
+    </div>
+    <div class="form-group">
+        <label for="dep_dest">Departure Destination</label>
+        <input type="text" class="form-control" id="dep_dest" placeholder="Departure Destination" name="dep_dest" [(ngModel)]="flightrequest.dep_dest" required>
+      </div>
+      <div class="form-group">
+        <label for="dep_date">Departure Date</label>
+        <input type="datetime-local" class="form-control" id="dep_date" name="dep_date" [(ngModel)]="flightrequest.dep_date" required>
+      </div>
+      <div class="form-group">
+        <label for="arr_dest">Arrival Destination</label>
+        <input type="text" class="form-control" id="arr_dest" name="arr_dest" placeholder="Arrival Destination" [(ngModel)]="flightrequest.arr_dest" required>
+      </div>
+      <div class="form-group">
+        <label for="arr_date">Arrival Date</label>
+        <input type="datetime-local" class="form-control" id="arr_date" name="arr_date" [(ngModel)]="flightrequest.arr_date" required>
+      </div>
+      <br>
+      <div class="container">
+      <div class="form-group" class="btn">
+      <button type="submit" class="btn btn-primary" >Save</button>
+       </div>
+       <a [routerLink]="['/flights']" class="btn" class="btn btn-primary">Back to List</a>
+       </div>
+  </form>
+
+  <p style="color:red">{{msg}}</p>
+</div>    </div>
+  </div>
+  </body>

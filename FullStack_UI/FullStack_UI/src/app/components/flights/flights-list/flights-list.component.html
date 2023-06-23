@@ -1,0 +1,41 @@
+<body>
+
+<h2 style=" color:brown;text-align:center">LIST OF FLIGHT DETAILS </h2>
+<div class="container">
+<a [routerLink]="['/flights','import']" class="btn" class="btn btn-primary">Import data</a>
+<a [routerLink]="['/flights','add']" class="btn" class="btn btn-primary">Add flight</a>
+<a (click)="extract()" class="btn" class="btn btn-primary" *ngIf="flights && flights.length>0">Export csv</a>
+</div>
+
+<table class="table" *ngIf="flights && flights.length>0">
+ 
+  <thead>
+    <tr>
+      <th scope="col">Flight ID</th>
+      <th scope="col">Dep Destination</th>
+      <th scope="col">Dep Date</th>
+      <th scope="col">Arr Destination</th>
+      <th scope="col">Arr date</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr *ngFor="let f of flights">
+      
+      <td>{{f.flightid}}</td>
+      <td>{{f.dep_dest}}</td>
+      <td>{{f.dep_date|date:'medium'}}</td>
+      <td>{{f.arr_dest}}</td>
+      <td>{{f.arr_date|date:'medium'}}</td>
+      <td><a [routerLink]="['/flights','edit',f.id]" class="btn btn-primary">Edit</a></td>
+      <td><button type="button" class="btn btn-primary" (click)="delete(f.id)">Delete</button></td>
+    </tr>
+  </tbody>
+</table>
+
+
+<p style="align-content: center;padding-top:250px;margin-left:500px;" *ngIf="!flights || flights.length <=0">No Flights found</p>
+
+<body>
+
+

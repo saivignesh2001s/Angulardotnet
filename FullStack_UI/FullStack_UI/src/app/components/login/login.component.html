@@ -1,0 +1,29 @@
+<p>login works!</p>
+<header>
+    <marquee style="color:darkblue; font-family: 'DM Sans' , sans-serif;"><h1>Welcome to Black Knights Airlines</h1></marquee>
+</header>
+<body>
+    <div class="bg">
+        <!-- partial:index.partial.html -->
+        <form method="post" (ngSubmit)="login()">
+            <div class="form-field">
+                <input type="email" placeholder="Email / Username" name="username"  required [(ngModel)]="name" />
+            </div>
+
+            <div class="form-field">
+                <input type="password" placeholder="Password" name="Password" required  [(ngModel)]="password" />
+            </div>
+
+            <div class="form-field">
+                <button class="btn" type="submit">Log in</button>
+            </div>
+            <b><p style="color:red;">{{msg}}</p></b>
+              
+        </form>
+    </div>
+
+    <!-- partial -->
+
+</body>
+<footer>
+</footer>
