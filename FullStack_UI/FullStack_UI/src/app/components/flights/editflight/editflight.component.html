@@ -3,7 +3,7 @@
     <h2 class="mb-3" style=" color:brown">Edit Flight</h2>
     <div class="row">
         <div class="col-6">
-<form #form="ngForm" (ngSubmit)="editflight()">
+<form ngNativeValidate #form="ngForm" (ngSubmit)="editflight()">
     <div class="form-group">
         <label for="id">Id</label>
         <input type="text" class="form-control" id="id"  name="{{flightrequest.id}}" [(ngModel)]="flightrequest.id" readonly  required>

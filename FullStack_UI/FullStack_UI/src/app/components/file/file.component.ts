@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { FlightlistService } from 'src/app/services/flightlist.service';
+import FlightlistService from 'src/app/services/flightlist.service';
 import { filed } from 'src/app/models/filed.model';
 import { HttpClient } from '@angular/common/http';
 
@@ -33,20 +33,19 @@ uploadfile(){
   else{
     console.log(this.selectedfile)
     this.flightservice.uploadflight(this.selectedfile).subscribe(value=>{
-   
-        if(value.toString()=="success"){
-          console.log(value)
-          this.route.navigate([""])
+        console.log(value)
+        if(value.statuscode==0){
+          this.msg=value.message
         }
-        else if(value=="failure"){
-          this.msg="Check data again"
+        else if(value.statuscode==1){
+          this.route.navigate(["flights"])
         }
-        else if(value=="Notsuccess"){
-          this.msg="Select csv files"
+        else if(value.statuscode==2){
+          this.msg=value.message
         
         }
-        else if(value=="Upload"){
-          this.msg="Upload csv files only"
+        else if(value.statuscode==3){
+          this.msg=value.message
         }
       
     })

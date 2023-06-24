@@ -23,12 +23,14 @@ namespace FullStack_Api.Controllers
  
         [HttpPost]
         public async Task<IActionResult> Post([FromForm]IFormFile file)
-        {   
+        {
+            status status = new status();
             if (file == null || file.Length == 0)
             {
-                return Ok("Notsuccess") ;
+                status.statuscode = 0;
+                status.message="Select files" ;
                     }
-                if (csvMethods.IsCsv(file.FileName))
+            else if (csvMethods.IsCsv(file.FileName))
                 {
 
                     string p = Path.GetFileName(file.FileName);
@@ -42,18 +44,22 @@ namespace FullStack_Api.Controllers
                     bool k1 = csvMethods.writecsvtosql(path);
                     if (k1)
                     {
-                        return Ok("success");
+                    status.statuscode = 1;
+                    status.message = "success";
                     }
                     else
                     {
-                        return Ok("failure");
+                    status.statuscode = 2;
+                    status.message = "failure";
                     }
 
                 }
                 else
                 {
-                    return Ok("Upload");
+                status.statuscode = 3;
+                status.message = "Upload csv files only";
                 }
+            return Ok(status);
             
 
         }
@@ -64,7 +70,10 @@ namespace FullStack_Api.Controllers
         public async Task<IActionResult> extractdata()
         {
             string p= csvMethods.extractdata();
-            return Ok(p);
+            status k=new status();
+            k.statuscode = 0;
+            k.message = p;
+            return Ok(k);
         }
 
        

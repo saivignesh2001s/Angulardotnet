@@ -1,11 +1,9 @@
-<p>login works!</p>
-<header>
-    <marquee style="color:darkblue; font-family: 'DM Sans' , sans-serif;"><h1>Welcome to Black Knights Airlines</h1></marquee>
-</header>
+
 <body>
-    <div class="bg">
+    <marquee style="color:darkblue; font-family: 'DM Sans' , sans-serif;"><h1>Welcome to Black Knights Airlines</h1></marquee>
+    <div  class="bg">
         <!-- partial:index.partial.html -->
-        <form method="post" (ngSubmit)="login()">
+        <form ngNativeValidate method="post" (ngSubmit)="login()">
             <div class="form-field">
                 <input type="email" placeholder="Email / Username" name="username"  required [(ngModel)]="name" />
             </div>

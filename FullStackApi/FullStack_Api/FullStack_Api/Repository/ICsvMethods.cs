@@ -75,7 +75,7 @@ namespace FullStack_Api.Repository
             public string extractdata() //extracting data from the sql
             {
                 var p = _methods.findall();
-                string[] columns = new string[] { "flightid", "dep_dest", "dep_date", "arr_dest", "arr_date" };
+                string[] columns = new string[] { "flightid", "dep_dest", "arr_dest", "dep_date",  "arr_date" };
                 string csv = string.Empty;
                 int i = 0;
                 foreach (var ps in columns)
@@ -92,7 +92,7 @@ namespace FullStack_Api.Repository
 
                 }
 
-            if (p.Count > 0)
+            if (p.Count>0)
             {
                 foreach (var pd in p)
                 {
@@ -100,7 +100,7 @@ namespace FullStack_Api.Repository
                     csv += pd.dep_dest.Replace(',', ';') + ',';
                     csv += pd.arr_dest.Replace(',', ';') + ',';
                     csv += Convert.ToString(pd.dep_date).Replace(',', ';').Replace('-', '/') + ',';
-                    csv += pd.arr_date.ToString().Replace(',', ';').Replace('-', '/') + "\r\n";
+                    csv += pd.arr_date.ToString().Replace(',', ';').Replace('-', '/')+"\r\n";
 
 
                 }

@@ -1,6 +1,6 @@
 import { Component,OnInit } from '@angular/core';
 import{flight} from 'src/app/models/flights.model';
-import { FlightlistService } from 'src/app/services/flightlist.service';
+import FlightlistService from 'src/app/services/flightlist.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -47,8 +47,9 @@ export class FlightsListComponent implements OnInit{
   }
   extract(){
     this.flightservice.extractflight().subscribe(response=>{
-     
+     if(response.statuscode==0)
         console.log(response)
+        this.flightservice.saveAsFile(response.message,"flights.csv","text/csv")
       
     })
   }

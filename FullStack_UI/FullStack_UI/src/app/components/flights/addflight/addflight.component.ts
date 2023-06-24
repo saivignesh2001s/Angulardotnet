@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { flight } from 'src/app/models/flights.model';
-import { FlightlistService } from 'src/app/services/flightlist.service';
+import FlightlistService from 'src/app/services/flightlist.service';
 
 @Component({
   selector: 'app-addflight',
